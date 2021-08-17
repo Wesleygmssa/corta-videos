@@ -1,0 +1,44 @@
+import { Grid } from '@material-ui/core'
+import React from 'react'
+import CardModule from '../../components/CardModule'
+import Layout from '../../components/Layout'
+import { useStyles } from './styles'
+import imgCutVideo from '../../images/imgCutVideo.png'
+import imgShowCutedVideo from '../../images/imgShowCutedVideo.png'
+import { useHistory } from 'react-router-dom'
+
+interface IHomeProps {
+  path?: string
+}
+
+const Home: React.FC<IHomeProps> = () => {
+  const classes = useStyles()
+  const history = useHistory();
+
+  const handleClickGoToCutVideo = () => {
+    history.push('/CorteVideo')
+  }
+
+  const handleClickGoToShowCutedVideo = () => {
+    alert('Redirecionar. . .')
+  }
+
+  return (
+    <Layout>
+      <Grid md={10} className={classes.gridHome}>
+        <CardModule
+          title="Cortar parte de vídeo"
+          imgSrc={imgCutVideo}
+          onClick={handleClickGoToCutVideo}
+        />
+        <CardModule
+          title="Visualizar parte de vídeo"
+          imgSrc={imgShowCutedVideo}
+          onClick={handleClickGoToShowCutedVideo}
+        />
+      </Grid>
+    </Layout>
+  )
+}
+
+export default Home
